@@ -1,0 +1,49 @@
+.tech {
+  background: var(--surface);
+  border-block: 1px solid var(--line);
+}
+
+.tech__split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+}
+.tech .eyebrow { margin: 0 0 1.25rem; }
+
+.tech__copy {
+  max-width: 27.5rem;
+  margin: 2rem 0 0;
+  color: var(--muted);
+}
+
+/* 1px gaps over a line-colored background draw the grid borders */
+.tech__stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1px;
+  background: var(--line);
+  border: 1px solid var(--line);
+}
+.tech__stat {
+  background: var(--bg);
+  padding: 2.25rem 1.75rem;
+}
+.tech__stat strong {
+  display: block;
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: 3.5rem;
+  line-height: 1.1;
+  color: var(--accent);
+}
+.tech__stat span {
+  font-size: var(--fs-small);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+@media (max-width: 54rem) {
+  .tech__split { grid-template-columns: 1fr; gap: 2.5rem; }
+}

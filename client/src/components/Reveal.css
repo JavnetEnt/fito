@@ -1,0 +1,23 @@
+.reveal {
+  opacity: 0;
+  transition:
+    opacity var(--dur) var(--ease),
+    transform var(--dur) var(--ease);
+  transition-delay: var(--delay, 0ms);
+  will-change: opacity, transform;
+}
+
+.reveal--up    { transform: translateY(3rem); }
+.reveal--left  { transform: translateX(-3.5rem); }
+.reveal--right { transform: translateX(3.5rem); }
+.reveal--scale { transform: scale(0.92); }
+
+.reveal--in {
+  opacity: 1;
+  transform: none;
+}
+
+/* Reduced motion: show everything immediately */
+@media (prefers-reduced-motion: reduce) {
+  .reveal { opacity: 1; transform: none; transition: none; }
+}

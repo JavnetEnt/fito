@@ -1,0 +1,133 @@
+.nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  border-bottom: 1px solid transparent;
+  transition:
+    background 0.4s var(--ease),
+    backdrop-filter 0.4s var(--ease),
+    border-color 0.4s var(--ease);
+}
+.nav--scrolled {
+  background: rgba(10, 10, 10, 0.6);
+  -webkit-backdrop-filter: blur(16px) saturate(140%);
+  backdrop-filter: blur(16px) saturate(140%);
+  border-color: rgba(255, 255, 255, 0.08);
+}
+
+.nav__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 4.5rem;
+}
+
+.nav__logo {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  letter-spacing: 0.1em;
+  line-height: 1;
+}
+.nav__logo span { color: var(--accent); }
+
+.nav__links {
+  display: flex;
+  gap: 2.25rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.nav__links a {
+  position: relative;
+  font-size: var(--fs-small);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--muted);
+  transition: color 0.3s var(--ease);
+}
+.nav__links a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -0.4rem;
+  height: 1px;
+  width: 0;
+  background: var(--accent);
+  transition: width 0.3s var(--ease);
+}
+.nav__links a:hover { color: var(--text); }
+.nav__links a:hover::after { width: 100%; }
+
+/* ---------- Hamburger (hidden on desktop) ---------- */
+.nav__toggle,
+.menu { display: none; }
+
+@media (max-width: 40rem) {
+  .nav__links { display: none; }
+
+  .nav__toggle {
+    display: block;
+    position: relative;
+    width: 2.75rem;
+    height: 2.75rem;
+    margin-right: -0.5rem;
+    background: none;
+    border: 0;
+    cursor: pointer;
+  }
+  .nav__toggle span {
+    position: absolute;
+    left: 0.7rem;
+    right: 0.7rem;
+    height: 2px;
+    background: var(--text);
+    transition: transform 0.4s var(--ease), top 0.4s var(--ease);
+  }
+  .nav__toggle span:nth-child(1) { top: 1.1rem; }
+  .nav__toggle span:nth-child(2) { top: 1.6rem; }
+  .nav__toggle.is-open span:nth-child(1) { top: 1.35rem; transform: rotate(45deg); background: var(--accent); }
+  .nav__toggle.is-open span:nth-child(2) { top: 1.35rem; transform: rotate(-45deg); background: var(--accent); }
+
+  /* ---------- Full-screen glass panel ---------- */
+  .menu {
+    display: flex;
+    position: fixed;
+    inset: 0;
+    z-index: 99;
+    align-items: center;
+    padding: 4.5rem var(--gutter) 2rem;
+    background: rgba(10, 10, 10, 0.88);
+    -webkit-backdrop-filter: blur(22px);
+    backdrop-filter: blur(22px);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.4s var(--ease), visibility 0.4s;
+  }
+  .menu--open { opacity: 1; visibility: visible; }
+
+  .menu ul { list-style: none; margin: 0; padding: 0; width: 100%; }
+  .menu li {
+    border-bottom: 1px solid var(--line);
+    opacity: 0;
+    transform: translateY(1.5rem);
+    transition: opacity 0.6s var(--ease), transform 0.6s var(--ease);
+    transition-delay: calc(var(--i) * 80ms + 120ms);
+  }
+  .menu--open li { opacity: 1; transform: none; }
+
+  .menu a {
+    display: block;
+    padding: 1.1rem 0;
+    font-family: var(--font-display);
+    font-size: clamp(2.75rem, 14vw, 4.5rem);
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    line-height: 1;
+  }
+  .menu a:hover,
+  .menu a:active { color: var(--accent); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .menu li { transition: none; opacity: 1; transform: none; }
+}

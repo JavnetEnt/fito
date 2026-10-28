@@ -1,0 +1,8 @@
+.story .eyebrow { margin: 0 0 1.25rem; }
+.story__title { font-size: clamp(2.75rem, 10vw, 8.75rem); max-width: 62rem; }
+.story__title em { font-style: normal; color: var(--accent); }
+.story__copy {
+  max-width: 35rem;
+  margin: 2.5rem 0 0;
+  color: var(--muted);
+}
