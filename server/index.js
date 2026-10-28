@@ -1,8 +1,11 @@
 import express from "express";
 import cors from "cors";
 import path from "node:path";
+import fs from "node:fs/promises";
+import { existsSync } from "node:fs";
 import { fileURLToPath } from "node:url";
 import { products } from "./products.js";
+
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const app = express();
